@@ -23,6 +23,7 @@ export interface CardAssetsProps extends VariantProps<typeof variants> {
   url: string | StaticImageData;
   alt: string;
   variant?: "oval" | "bow";
+  priority?: boolean;
 }
 
 export function CardAssets({
@@ -31,6 +32,7 @@ export function CardAssets({
   alt,
   className,
   variant,
+  priority = false,
   ...props
 }: CardAssetsProps) {
   return (
@@ -40,10 +42,10 @@ export function CardAssets({
         alt={alt}
         width={400}
         sizes="(max-width: 768px) 200px, 220px"
-        priority
-        loading="eager"
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
         height={400}
-        quality={95}
+        quality={75}
         className="h-full w-full border object-cover"
       />
     </div>

@@ -1,4 +1,4 @@
-import { PrincipalText } from "./PrincipalText";
+import { PrincipalText } from "@/components/shared/PrincipalText";
 import { SubTitle } from "./SubTitle";
 
 export function LeadingSection() {

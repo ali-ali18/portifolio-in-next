@@ -24,13 +24,14 @@ export function ContainerCard({
       transition={{ duration: 0.8, delay: 0.5 }}
     >
       <Marquee startDelaySeconds={1.3} className="w-full [--gap:12px]">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <CardAssets
             key={item.id}
             id={item.id}
             url={item.url}
             alt={item.alt}
             variant={"bow"}
+            priority={index <= 2}
           />
         ))}
       </Marquee>

@@ -154,3 +154,15 @@
     color: var(--primary-foreground);
   }
 }
+
+@layer utilities {
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: calc(2.5 / 2.25);
+  }
+
+  .text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}

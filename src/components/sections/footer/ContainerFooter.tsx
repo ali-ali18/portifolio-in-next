@@ -32,11 +32,17 @@ export function ContainerFooter({ children, className }: ContainerFooterProps) {
           "absolute bottom-0 md:bottom-2 left-1/2 -translate-x-1/2 overflow-hidden origin-bottom",
           "w-full md:w-[calc(100vw-1.3rem)]",
           "h-[calc(100vh-0.8rem)] md:h-[calc(100vh-1.3rem)]",
-          "bg-zinc-950 rounded-t-3xl md:rounded-3xl",
+          "bg-primary rounded-t-3xl md:rounded-3xl",
           className,
         )}
       >
-        <div className="h-full w-full">{children}</div>
+        <div
+          className="absolute inset-0 z-0 rounded-t-3xl md:rounded-3xl bg-[url('/noise-texture.svg')] bg-repeat opacity-[0.06] pointer-events-none"
+          aria-hidden
+        />
+        <div className="relative z-10 h-full w-full px-4 py-6 md:px-8 md:py-10">
+          {children}
+        </div>
       </m.div>
     </section>
   );

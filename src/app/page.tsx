@@ -17,13 +17,17 @@ const Footer = lazyLoad(() =>
   import("@/components/sections/footer/Footer").then((mod) => mod.Footer),
 );
 
+const About = lazyLoad(() =>
+  import("@/components/sections/about/About").then((mod) => mod.About),
+);
+
 export default function Page() {
   const loading = (
     <Skeleton className="w-full h-[300px] rounded-xl max-w-7xl mx-auto" />
-  )
+  );
 
   return (
-    <MotionContext> 
+    <MotionContext>
       <Header navLinks={navLinks} variant={"default"} />
       <Hero />
 
@@ -33,6 +37,10 @@ export default function Page() {
 
       <Suspense fallback={loading}>
         <Projects />
+      </Suspense>
+
+      <Suspense fallback={loading}>
+        <About />
       </Suspense>
 
       <Suspense fallback={loading}>
