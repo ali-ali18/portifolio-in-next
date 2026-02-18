@@ -45,7 +45,7 @@ export function CardAssets({
         sizes="(max-width: 768px) 200px, 320px"
         priority={priority}
         loading={priority ? "eager" : "lazy"}
-        quality={65}
+        quality={75}
         className="h-full w-full border object-cover"
       />
     </div>

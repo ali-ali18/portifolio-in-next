@@ -21,6 +21,10 @@ const About = lazyLoad(() =>
   import("@/components/sections/about/About").then((mod) => mod.About),
 );
 
+const Faq = lazyLoad(() =>
+  import("@/components/sections/faq/Faq").then((mod) => mod.Faq),
+);
+
 export default function Page() {
   const loading = (
     <Skeleton className="w-full h-[300px] rounded-xl max-w-7xl mx-auto" />
@@ -41,6 +45,10 @@ export default function Page() {
 
       <Suspense fallback={loading}>
         <About />
+      </Suspense>
+
+      <Suspense fallback={loading}>
+        <Faq />
       </Suspense>
 
       <Suspense fallback={loading}>
