@@ -31,7 +31,7 @@ export function ContainerCard({
             url={item.url}
             alt={item.alt}
             variant={"bow"}
-            priority={index <= 2}
+            priority={index === 0}
           />
         ))}
       </Marquee>

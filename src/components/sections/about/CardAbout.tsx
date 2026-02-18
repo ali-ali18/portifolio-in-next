@@ -16,7 +16,7 @@ export function CardAbout({ src, alt }: CardAboutProps) {
           className="w-full h-full object-cover rounded-3xl"
           priority={false}
           loading="lazy"
-          quality={95}
+          quality={75}
           sizes="(max-width: 768px) 300px, 650px"
         />
       </div>

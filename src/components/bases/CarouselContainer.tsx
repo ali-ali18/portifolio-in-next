@@ -59,8 +59,8 @@ export function CarouselContainer({
       <CarouselContent className="mr-8 gap-3 pr-50">{children}</CarouselContent>
       {activeButton && (
         <>
-          {current > 0 && <CarouselPrevious />}
-          {current < count - 1 && <CarouselNext />}
+          {current > 0 && <CarouselPrevious className={"left-1 z-40"}/>}
+          {current < count - 1 && <CarouselNext className={"right-1 z-40"}/>}
         </>
       )}
       {current > 0 && (

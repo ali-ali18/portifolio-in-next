@@ -40,12 +40,12 @@ export function CardAssets({
       <Image
         src={url}
         alt={alt}
-        width={400}
-        sizes="(max-width: 768px) 200px, 220px"
+        width={320}
+        height={320}
+        sizes="(max-width: 768px) 200px, 320px"
         priority={priority}
         loading={priority ? "eager" : "lazy"}
-        height={400}
-        quality={75}
+        quality={65}
         className="h-full w-full border object-cover"
       />
     </div>

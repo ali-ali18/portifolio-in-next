@@ -49,7 +49,7 @@ export function CardProjects({
           className="w-full h-full object-cover rounded-3xl scale-110 group-hover:scale-100 transition-all duration-700"
           priority={false}
           loading="lazy"
-          quality={95}
+          quality={75}
           sizes="(max-width: 768px) 250px, 500px"
         />
 
