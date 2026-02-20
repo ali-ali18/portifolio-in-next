@@ -1,0 +1,85 @@
+import { HeroProjects } from "@/components/shared/HeroProjects";
+
+export const meta = {
+  title: "AGROERVAS",
+  subtitle: "Um projeto de geração de etiquetas, o sistema puxa dados do pedido do sistema parceiro, formata e remove tags, gera e faz a conexão com a impressora para gerar as etiquetas.",
+  infosProject: {
+    date: "_08.25",
+    technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+    linkProject: "https://github.com/...",
+  },
+};
+
+<HeroProjects
+  title={meta.title}
+  description={meta.subtitle}
+  infosProject={meta.infosProject}
+>
+
+## Cenário operacional
+A Agroervas é uma distribuidora de produtos naturais desidratados, insumos alimentícios, chás e derivados, atuando como 
+distribuidora de revenda. Ela recebe produtos de terceiros e, antes da expedição, realiza a etiquetagem para aplicar a própria 
+marca nos itens, padronizando a apresentação e as informações do produto.
+
+Nesse cenário, a etiquetagem é uma etapa operacional crítica entre o recebimento e o envio. Quando esse processo fica lento ou 
+inconsistente, ele vira gargalo direto na conferência e na expedição, foi exatamente esse o ponto de partida do projeto.
+
+## O problema inicial
+O cliente enfrentava uma grande demora para gerar as etiquetas dos pedidos, porque era necessário editar manualmente informações 
+como lote, validade, fabricação (FAB) e dados complementares. Esse retrabalho consumia muito tempo do colaborador responsável pela
+conferência e ainda gerava inconsistências (datas incorretas, lotes divergentes e fabricantes diferentes), o que aumentava 
+devoluções e atrasava o envio.
+
+Na prática, um pedido com cerca de 35 itens levava, em média, de 35 a 40 minutos para ter todas as etiquetas prontas.
+
+## O nosso desafio
+Eu e o cliente tínhamos uma meta clara: reduzir drasticamente os custos gerados por erros e acelerar o processo de etiquetagem. 
+Para isso, definimos como prioridade criar um fluxo simples, confiável e intuitivo, eliminando o retrabalho manual e padronizando 
+as informações antes da impressão.
+
+Além de desempenho, a usabilidade era parte central: o processo antigo dependia de pessoas que participaram da criação base das 
+etiquetas para operar com segurança. Com a nova abordagem, qualquer colaborador consegue gerar e imprimir etiquetas seguindo um 
+fluxo guiado e consistente, sem depender de conhecimento específico do processo anterior.
+
+## Integração Bling + impressão Zebra
+Construi um sistema de geração de etiquetas integrado ao Bling ERP via API, permitindo buscar vendas paginadas (20 por vez) e 
+selecionar rapidamente o pedido a ser processado. Após a seleção, o sistema consulta os itens do pedido, cruza esses dados com os 
+produtos já cadastrados no banco (para complementar informações como nome científico e parte utilizada) e retorna uma lista pronta
+para impressão; se algum campo estiver faltando, ele pode ser preenchido na hora e fica salvo para acelerar impressões futuras.
+
+A impressão é feita em uma impressora Zebra, então trabalhei com um layout padronizado e preenchimento dinâmico dos dados 
+(lote, peso por embalagem, parte utilizada e demais informações). Para garantir uma impressão direta e confiável, o sistema se
+comunica com o ambiente de impressão da Zebra na máquina (via SDK no front-end e o serviço Zebra Browser Print), gerando todas as
+etiquetas de uma vez e reduzindo a necessidade de validações manuais, já que as regras e campos obrigatórios ficam controlados 
+pelo próprio sistema.
+ 
+ ## Implementação
+ O fluxo foi desenhado para ser simples no uso, mas bem controlado por trás. Primeiro, passamos pelo processo de autenticação do Bling para habilitar o consumo 
+ da API; com isso, o sistema consegue acessar os pedidos de venda e carregar os dados necessários para a geração de etiquetas.
+
+Depois de buscar os pedidos, eles são listados no front-end para seleção rápida. Ao acessar um pedido, o colaborador visualiza as 
+informações básicas conforme as regras de acesso do seu perfil. Antes de liberar a impressão, o sistema valida item a item se 
+todos os campos obrigatórios estão completos; se estiver tudo certo, a impressão é liberada. Caso exista algum campo faltante, o 
+usuário preenche uma única vez e essa informação fica salva para reutilizações futuras, evitando retrabalho nas próximas 
+impressões.
+
+Quando a impressão é liberada, o sistema consolida os dados do pedido e envia para a API para persistir o estado dos itens e 
+evitar perdas durante o processo. Em seguida, é chamada a API de geração de etiquetas, onde acontece o tratamento e normalização 
+dos dados (como ajuste de nomes, remoção de tags, cálculo/padronização de peso e definição de quantas etiquetas serão geradas para
+ cada item). Ao finalizar, a API retorna um objeto indicando sucesso e o conteúdo de impressão (gerado no formato específico da 
+ impressora), que então é repassado pelo front-end para o SDK da Zebra.
+
+Com isso, o SDK envia o conteúdo para o serviço de impressão que roda internamente na máquina (Zebra Browser Print), que por sua 
+vez encaminha para a impressora. Em cenários como falta de etiquetas/troca de mídia no meio do processo, a impressão utiliza 
+cache/controle de progresso para saber onde parou e retomar corretamente, garantindo que o item atual finalize antes de seguir 
+para o próximo.
+
+## Resultados
+Após a implementação, o tempo de geração de etiquetas caiu de um gargalo operacional para um fluxo rápido e previsível. Hoje, um 
+pedido com 40 a 50 itens leva, em média, cerca de 2 minutos para ter toda a geração concluída.
+
+Além do ganho de tempo, a consistência das informações melhorou no dia a dia: os pesos quase nunca saem incorretos e o retrabalho 
+por divergências diminuiu bastante. Do ponto de vista operacional, também não houve mais relatos de rejeição/devolução de pedidos 
+por problemas relacionados às etiquetas, o que reforça que o processo ficou mais confiável.
+
+</HeroProjects>

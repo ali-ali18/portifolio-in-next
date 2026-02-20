@@ -21,18 +21,20 @@ const headerVariants = cva("w-full p-3 md:p-4.5", {
 
 interface HeaderProps {
   navLinks: NavLink[];
+  className?: string;
 }
 
 export function Header({
   navLinks,
   variant,
+  className,
 }: HeaderProps & VariantProps<typeof headerVariants>) {
   return (
     <m.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className={cn(headerVariants({ variant }))}
+      className={cn(headerVariants({ variant }), className)}
     >
       <Navigation navLinks={navLinks} />
     </m.header>

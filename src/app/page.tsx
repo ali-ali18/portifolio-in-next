@@ -2,7 +2,6 @@ import lazyLoad from "next/dynamic";
 import { Suspense } from "react";
 import { Header } from "@/components/sections/header/Header";
 import { Hero } from "@/components/sections/hero/Hero";
-import { MotionContext } from "@/components/shared/MotionContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import { navLinks } from "@/lib/data/links.data";
 
@@ -31,7 +30,7 @@ export default function Page() {
   );
 
   return (
-    <MotionContext>
+    <>
       <Header navLinks={navLinks} variant={"default"} />
       <Hero />
 
@@ -54,6 +53,6 @@ export default function Page() {
       <Suspense fallback={loading}>
         <Footer />
       </Suspense>
-    </MotionContext>
+    </>
   );
 }

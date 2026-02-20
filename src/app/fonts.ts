@@ -8,6 +8,6 @@ export const pilowlava = localFont({
     },
   ],
   variable: "--font-pilowlava",
-  display: "swap",
+  display: "optional",
   preload: false,
 });

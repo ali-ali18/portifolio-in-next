@@ -6,8 +6,8 @@ interface ProjectsData extends Omit<CardProjectsProps, "index"> {}
 
 const projects: ProjectsData[] = [
   {
-    href: "/",
-    title: "Project 1",
+    href: "/projects/agroervas",
+    title: "Agroervas",
     date: "09.25",
     src: project1,
     logo: ChatGptFreeIcons,

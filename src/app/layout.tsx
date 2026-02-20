@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
+import { MotionContext } from "@/components/shared/MotionContext";
+import { PageTransition } from "@/components/shared/PageTransition";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -21,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={quicksand.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <MotionContext>
+          <PageTransition>{children}</PageTransition>
+        </MotionContext>
+      </body>
     </html>
   );
 }
