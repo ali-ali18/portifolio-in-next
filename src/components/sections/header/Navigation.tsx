@@ -1,11 +1,11 @@
 import { MenuIcon } from "@hugeicons/core-free-icons";
+import Link from "next/link";
 import { TextPushButton } from "@/components/bases/TextPushButton";
 import { DrawerApp } from "@/components/shared/DrawerApp";
 import { Icon } from "@/components/shared/Icon";
 import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/button";
 import type { NavLink } from "@/types/NavLinkstypes";
-import Link from "next/link";
 
 interface NavigationProps {
   navLinks: NavLink[];
@@ -31,7 +31,7 @@ export function Navigation({ navLinks }: NavigationProps) {
       </div>
 
       <div className="items-center gap-5 hidden md:flex">
-        <TextPushButton label="FAQ" as="link" href="#faq" />
+        <TextPushButton label="FAQ" as="link" href="#faq"  />
         <TextPushButton
           variant="radiusShrink"
           label="Contact"

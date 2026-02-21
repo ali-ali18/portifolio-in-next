@@ -14,12 +14,12 @@ const navLinks: NavLink[] = [
   {
     icon: FolderLibraryIcon,
     label: "Projects",
-    href: "/projects",
+    href: "projects",
   },
   {
     icon: UserIcon,
     label: "About",
-    href: "/about",
+    href: "about",
   },
 ];
 

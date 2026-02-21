@@ -7,7 +7,7 @@ import { ContainerProjects } from "./ContainerProjects";
 
 export function Projects() {
   return (
-    <Container>
+    <Container id="projects">
       <ItemSection
         animateContent={false}
         titleSection={<SectionTitle as="h2">Últimos Projetos.</SectionTitle>}

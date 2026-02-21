@@ -5,7 +5,7 @@ import { faqItems } from "@/lib/data/faq.data";
 
 export function Faq() {
   return (
-    <Container>
+    <Container id="faq">
       <ItemSection
         titleSection="FAQ"
         itemsAlignment="start"

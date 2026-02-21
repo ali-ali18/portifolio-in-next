@@ -25,15 +25,15 @@ const links: FooterLinkGroup[] = [
       },
       {
         label: "Projects",
-        href: "/projects",
+        href: "projects",
       },
       {
         label: "About",
-        href: "/about",
+        href: "about",
       },
       {
         label: "FAQ",
-        href: "/faq",
+        href: "faq",
       },
     ],
   },

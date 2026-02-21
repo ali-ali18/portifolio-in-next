@@ -29,6 +29,7 @@ export function Header({
   variant,
   className,
 }: HeaderProps & VariantProps<typeof headerVariants>) {
+  
   return (
     <m.header
       initial={{ opacity: 0 }}

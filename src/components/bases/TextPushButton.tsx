@@ -3,6 +3,7 @@
 import { cva } from "class-variance-authority";
 import * as m from "motion/react-m";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +29,8 @@ type TextPushButtonProps = {
   duration?: number;
   as?: "button" | "link";
   href?: string;
-  variant?: "default" | "radiusShrink" 
+  variant?: "default" | "radiusShrink";
+  classNameLink?: string;
 };
 
 export function TextPushButton({
@@ -38,11 +40,17 @@ export function TextPushButton({
   href,
   className,
   variant = "default",
+  classNameLink,
 }: TextPushButtonProps) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const sectionId = href?.replace(/^#/, "") ?? "";
+  const resolvedHref =
+    href === "/" ? "/" : isHome ? `#${sectionId}` : `/#${sectionId}`;
   if (as === "link") {
     return (
-      <Link href={href as string} className={className}>
-        <TextPushButton label={label} duration={duration} variant={variant} />
+      <Link href={resolvedHref} className={classNameLink}>
+        <TextPushButton label={label} duration={duration} variant={variant} className={className} />
       </Link>
     );
   }

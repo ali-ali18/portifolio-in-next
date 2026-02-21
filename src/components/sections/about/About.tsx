@@ -5,7 +5,7 @@ import { CardAbout } from "./CardAbout";
 
 export function About() {
   return (
-    <Container className="flex flex-col gap-12 items-center w-full h-full">
+    <Container id="about" className="flex flex-col gap-12 items-center w-full h-full">
       <AboutSectionHeader />
       <CardAbout src={AboutImage} alt="About" />
     </Container>

@@ -23,9 +23,18 @@ function FooterLinkColumn({ group }: FooterLinkColumnProps) {
             key={link.label}
             className="text-secondary/80 text-sm hover:text-secondary transition-colors"
           >
-            <Link href={link.href}>
-              <TextPushButton label={link.label} className="p-0" />
-            </Link>
+            {group.title === "Sitemap" ? (
+              <TextPushButton
+                as="link"
+                href={link.href}
+                label={link.label}
+                className="p-0"
+              />
+            ) : (
+              <Link href={link.href}>
+                <TextPushButton label={link.label} className="p-0"/>
+              </Link>
+            )}
           </li>
         ))}
       </ul>
